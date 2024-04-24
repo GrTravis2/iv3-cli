@@ -1,0 +1,27 @@
+iv3-cli cmd plans:
+
+-cli needs to:
+	-issue commands from iv3 lib for testing
+	-have cfg command available to setup camera for operation, make camera struct and other settings as required
+	-go into run mode, send cli into mode where it continuously runs after receiving some input and displays results/stats
+
+-cmds available to camera (* = optional/nice-to-haves)
+	-trigger cam and read results
+		-leaving note, will need to have way to listen for trigger i/o. Need a button or something...
+		-flags/args: *maybe have loop arg for testing? how many times to trigger?
+	-read camera info
+		-flags/args: none
+	-change program
+		-flags/args: need to include program # or name as arg, maybe have flag to list loaded programs eventually (--ls, --list)?
+	-read camera stats
+		-flags/args: none
+	-read camera error
+		-flags/args: none
+	*read and write tool thresholds
+		-flags/args: need to specify tool # and change in threshold
+	*reset current run stats
+		-flags/args: none
+	*read current camera status
+		-flags/args: none
+	*read current program
+		-flags/args: none
