@@ -1,6 +1,5 @@
-Camera:
-    location: "myDesk"
-    description: "takes pictures of myDesk"
-    ipAddress: "10.205.31.0"
-    port: "8500"
-    delimiter: "\r\n"
+location: "myDesk"
+description: "takes pictures of myDesk"
+ipAddress: "10.205.31.0"
+port: "8500"
+delimiter: "\r\n"

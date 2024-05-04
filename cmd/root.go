@@ -5,13 +5,19 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
+	"github.com/GrTravis2/iv3"
+	"github.com/go-yaml/yaml"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
-var cfgFile string
+/* var Config struct {
+	camera iv3.Camera
+} */
+
+var Camera iv3.Camera
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -33,39 +39,26 @@ func Execute() {
 }
 
 func init() {
-	cobra.OnInitialize(initConfig)
+	//cobra.OnInitialize(initConfig)
+	//Dump viper and just read in a global var struct - should be ok for now...
+	data, err := os.ReadFile("iv3-cli.yaml")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	err2 := yaml.Unmarshal([]byte(data), &Camera)
+	if err2 != nil {
+		log.Fatalf("error: %v", err2)
+	}
+	fmt.Printf("Camera in same scope: %+v\n", Camera)
 
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.iv3-cli.yaml)")
+	//rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.iv3-cli.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-}
-
-// initConfig reads in config file and ENV variables if set.
-func initConfig() {
-	if cfgFile != ".iv3-cli" {
-		// Use config file from the flag.
-		viper.SetConfigFile(cfgFile)
-	} else {
-		// Find home directory.
-		home, err := os.UserHomeDir()
-		cobra.CheckErr(err)
-
-		// Search config in home directory with name ".iv3-cli" (without extension).
-		viper.AddConfigPath(home)
-		viper.SetConfigType("yaml")
-		viper.SetConfigName("iv3-cli")
-	}
-
-	//viper.AutomaticEnv() // read in environment variables that match
-
-	// If a config file is found, read it in.
-	if err := viper.ReadInConfig(); err == nil {
-		fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
-	}
 }
