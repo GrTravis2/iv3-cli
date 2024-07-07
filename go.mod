@@ -5,7 +5,7 @@ go 1.22.0
 require (
 	github.com/GrTravis2/iv3 v0.2.0-alpha
 	github.com/go-yaml/yaml v2.1.0+incompatible
-	github.com/spf13/cobra v1.8.0
+	github.com/spf13/cobra v1.8.1
 )
 
 require (
