@@ -12,7 +12,7 @@ iv3-cli cmd plans:
 	-read camera info
 		-flags/args: none
 	-change program
-		-flags/args: need to include program # or name as arg, maybe have flag to list loaded programs eventually (--ls, --list)?
+		-flags/args: need to include program # or name as arg, maybe have flag to list loaded programs eventually (-ls, --list)?
 	-read camera stats
 		-flags/args: none
 	-read camera error

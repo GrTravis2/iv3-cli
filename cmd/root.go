@@ -4,12 +4,12 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
 
 	"github.com/GrTravis2/iv3"
-	"github.com/go-yaml/yaml"
 	"github.com/spf13/cobra"
 )
 
@@ -41,12 +41,12 @@ func Execute() {
 func init() {
 	//cobra.OnInitialize(initConfig)
 	//Dump viper and just read in a global var struct - should be ok for now...
-	data, err := os.ReadFile("iv3-cli.yaml")
+	data, err := os.ReadFile("iv3-cli.json")
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	err2 := yaml.Unmarshal([]byte(data), &Camera)
+	err2 := json.Unmarshal([]byte(data), &Camera)
 	if err2 != nil {
 		log.Fatalf("error: %v", err2)
 	}

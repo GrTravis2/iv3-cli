@@ -1,0 +1,7 @@
+{
+"location" : "myDesk",
+"description" : "Gavin's Desk Camera",
+"ipAddress" : "10.205.31.0",
+"port" : "8500",
+"delimiter" : "\r\n"
+}

@@ -16,7 +16,7 @@ var infoCmd = &cobra.Command{
 	Long:  `read current camera struct to see settings.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("info called")
-		fmt.Printf("Current camera configuration: %+v\n", Camera)
+		Camera.Info()
 	},
 }
 
