@@ -3,7 +3,7 @@ module github.com/GrTravis2/iv3-cli
 go 1.22.0
 
 require (
-	github.com/GrTravis2/iv3 v0.2.1-alpha
+	github.com/GrTravis2/iv3 v0.2.3-alpha
 	github.com/spf13/cobra v1.8.1
 )
 
