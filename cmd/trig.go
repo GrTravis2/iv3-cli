@@ -6,6 +6,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/GrTravis2/iv3"
 	"github.com/spf13/cobra"
 )
 
@@ -16,6 +17,8 @@ var trigCmd = &cobra.Command{
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("trig called")
+		result := iv3.TriggerStatusResult(Camera)
+		fmt.Printf("Camera result #: %v\nCamera overall status pass: %v", result.ResultNumber, result.TotalPassResult) //will work after next iv3 release
 	},
 }
 

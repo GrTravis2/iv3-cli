@@ -43,6 +43,22 @@ func init() {
 	//Dump viper and just read in a global var struct - should be ok for now...
 	data, err := os.ReadFile("iv3-cli.json")
 	if err != nil {
+		fmt.Println("Unable to read local config file, initializing new config with default settings.")
+		defaultCamera := iv3.Camera{
+			Location:    "cell location",
+			Description: "Camera purpose",
+			IpAddress:   "192.168.1.0",
+			Port:        "8500", //Default Camera Setting
+			Delimiter:   "\r\n", //Default Camera Setting
+		}
+		cameraJSON, errJson := json.Marshal(defaultCamera)
+		if errJson != nil {
+			fmt.Printf("Error converting struct to json. Error: %v", errJson)
+		}
+		err := os.WriteFile("iv3-cli.json", cameraJSON, 0644)
+		if err != nil {
+			fmt.Printf("Error writing to iv3-cli.json. Error: %v", err)
+		}
 		log.Fatalln(err)
 	}
 
